@@ -50,7 +50,7 @@ layout: default
 
 </v-clicks>
 
-<div v-click class="mt-8 p-4 bg-blue-500 bg-opacity-20 rounded">
+<div class="mt-4 p-2 bg-blue-500 bg-opacity-20 rounded text-sm">
 💡 <strong>Key Philosophy:</strong> We focus on the "why" and "how" of system internals, not just commands to memorize.
 </div>
 
@@ -60,12 +60,12 @@ layout: two-cols
 
 # 📊 Course Details
 
+<div class="text-sm">
+
 **Course Code:** CSS 262  
 **Duration:** 15 Weeks  
 **Credits:** 5-6 ECTS  
 **Level:** Undergraduate
-
-<div class="mt-8">
 
 ### 🎯 Workload
 - Lectures: 15 hours
@@ -80,7 +80,7 @@ layout: two-cols
 
 ::right::
 
-<div class="ml-4">
+<div class="text-sm">
 
 ### 📈 Grading Breakdown
 
@@ -93,13 +93,9 @@ pie
     "Quizzes" : 10
 ```
 
-<v-clicks>
-
 - ✅ **Automated Grading** via GitHub Actions
 - 🔄 Resubmissions allowed until deadline
 - 🎯 Code must work on standard environment
-
-</v-clicks>
 
 </div>
 
@@ -221,7 +217,7 @@ layout: default
 
 </div>
 
-<div class="mt-8 p-4 bg-yellow-500 bg-opacity-20 rounded">
+<div class="mt-4 p-2 bg-yellow-500 bg-opacity-20 rounded text-sm">
 ⚠️ <strong>Important:</strong> You MUST have a working VM environment by next week's lab!
 </div>
 
@@ -279,7 +275,7 @@ layout: two-cols
 
 </v-clicks>
 
-<div v-click class="mt-6 p-3 bg-blue-500 bg-opacity-20 rounded">
+<div class="mt-4 p-2 bg-blue-500 bg-opacity-20 rounded text-sm">
 
 **In this course:** We'll focus on **bash** (default on most Linux distributions)
 
@@ -323,7 +319,7 @@ layout: default
 
 # The Command Prompt
 
-<div class="mb-6">
+<div class="mb-4 text-xs">
 
 ```bash
 user@hostname:~/directory$ command [options] [arguments]
@@ -331,9 +327,7 @@ user@hostname:~/directory$ command [options] [arguments]
 
 </div>
 
-<v-clicks>
-
-<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="grid grid-cols-2 gap-4 mb-4 text-xs">
 
 <div>
 
@@ -359,13 +353,9 @@ user@hostname:~/directory$ command [options] [arguments]
 
 </div>
 
-<div class="p-4 bg-green-500 bg-opacity-20 rounded">
-
+<div class="p-2 bg-green-500 bg-opacity-20 rounded text-xs">
 💡 **Pro Tip:** The prompt can be customized via the `PS1` environment variable!
-
 </div>
-
-</v-clicks>
 
 ---
 layout: default
@@ -373,59 +363,42 @@ layout: default
 
 # Essential Navigation Commands
 
-<div class="grid grid-cols-2 gap-6">
+<div class="grid grid-cols-2 gap-4 text-xs">
 
 <div>
 
-<v-clicks>
-
 ### Moving Around
 ```bash
-# Print working directory
-pwd
+pwd       # Print working directory
 
 # List contents
 ls
-ls -l    # Long format
-ls -a    # Show hidden files
-ls -lah  # All options combined
+ls -l     # Long format
+ls -a     # Show hidden files
+ls -lah   # All options
 
 # Change directory
 cd /etc
-cd ~     # Go home
-cd ..    # Go up one level
-cd -     # Go to previous directory
+cd ~      # Go home
+cd ..     # Go up one level
+cd -      # Previous directory
 ```
-
-</v-clicks>
 
 </div>
 
 <div>
 
-<v-clicks>
-
 ### File Operations
 ```bash
-# Create file
-touch file.txt
+touch file.txt              # Create file
+cp source.txt dest.txt      # Copy
+mv old.txt new.txt          # Move/rename
+rm file.txt                 # Delete
+rm -r directory/            # Recursive delete
 
-# Copy files
-cp source.txt dest.txt
-
-# Move/rename
-mv old.txt new.txt
-
-# Delete
-rm file.txt
-rm -r directory/  # Recursive
-
-# Create directory
-mkdir new_folder
-mkdir -p path/to/folder  # Parents
+mkdir new_folder            # Create dir
+mkdir -p path/to/folder     # With parents
 ```
-
-</v-clicks>
 
 </div>
 
@@ -437,7 +410,7 @@ layout: default
 
 # Getting Help
 
-<v-clicks>
+<div class="text-sm">
 
 ### 1. Manual Pages (man)
 ```bash
@@ -462,10 +435,10 @@ which python  # Show command location
 info coreutils     # GNU info system
 ```
 
-</v-clicks>
+</div>
 
-<div v-click class="mt-4 p-4 bg-purple-500 bg-opacity-20 rounded">
-🎓 <strong>Learning Skill:</strong> Reading man pages is a critical skill you'll use throughout your career!
+<div class="mt-2 p-2 bg-purple-500 bg-opacity-20 rounded text-sm">
+🎓 <strong>Learning Skill:</strong> Reading man pages is critical for your career!
 </div>
 
 ---
@@ -493,7 +466,7 @@ layout: default
 
 </div>
 
-<div class="mt-6 p-3 bg-blue-500 bg-opacity-20 rounded text-sm">
+<div class="mt-2 p-2 bg-blue-500 bg-opacity-20 rounded text-sm">
 💡 <strong>Everything in Linux is a file!</strong> Including devices, processes, and network sockets.
 </div>
 
@@ -627,7 +600,7 @@ ps aux | grep apache | wc -l           # Count processes
 
 </div>
 
-<div class="mt-6 p-3 bg-green-500 bg-opacity-20 rounded text-sm">
+<div class="mt-2 p-2 bg-green-500 bg-opacity-20 rounded text-sm">
 💡 **Unix Philosophy:** Write programs that do one thing well and work together via pipes.
 </div>
 
@@ -669,24 +642,21 @@ layout: default
 
 # Environment Variables
 
-<div class="mb-6 text-sm">
+<div class="mb-4 text-xs">
 
 ### What are they?
 Variables that affect how processes run on your system.
 
 ```bash
-# View variables
 env                  # View all
 echo $HOME           # View specific
-
-# Set variable
-MY_VAR="Hello"
+MY_VAR="Hello"       # Set variable
 export MY_VAR="Hello"  # Export for child processes
 ```
 
 </div>
 
-<div class="grid grid-cols-2 gap-4 text-sm">
+<div class="grid grid-cols-2 gap-4 text-xs">
 
 <div>
 
@@ -717,7 +687,7 @@ layout: default
 
 # The PATH Variable
 
-<div class="mb-6">
+<div class="mb-4 text-xs">
 
 ### What is PATH?
 A colon-separated list of directories where the shell looks for commands.
@@ -726,10 +696,6 @@ A colon-separated list of directories where the shell looks for commands.
 echo $PATH
 # /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 ```
-
-</div>
-
-<div class="mb-6 text-sm">
 
 ### How it works
 When you type `ls`, the shell searches directories in PATH order until found.
@@ -808,7 +774,7 @@ layout: default
 
 </div>
 
-<div class="mt-6 p-3 bg-green-500 bg-opacity-20 rounded text-sm">
+<div class="mt-2 p-2 bg-green-500 bg-opacity-20 rounded text-sm">
 ✅ <strong>Goal:</strong> Have a working Linux environment ready for Week 2!
 </div>
 
@@ -846,7 +812,7 @@ layout: default
 
 </div>
 
-<div class="mt-8 p-3 bg-purple-500 bg-opacity-20 rounded text-sm">
+<div class="mt-2 p-2 bg-purple-500 bg-opacity-20 rounded text-sm">
 🎓 <strong>Remember:</strong> The goal isn't memorization—it's understanding how the system works!
 </div>
 
@@ -917,10 +883,8 @@ layout: default
 
 </div>
 
-<div v-click class="mt-6 p-4 bg-red-500 bg-opacity-20 rounded">
-
+<div class="mt-2 p-2 bg-red-500 bg-opacity-20 rounded text-sm">
 ⏰ <strong>No Extensions:</strong> Late work not accepted. Plan accordingly!
-
 </div>
 
 ---

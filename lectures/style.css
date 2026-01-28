@@ -3,6 +3,10 @@
 /* Ensure slides use full viewport and scale properly */
 .slidev-layout {
   height: 100%;
+}
+
+/* Only apply flex column to default layouts, not two-columns */
+.slidev-layout:not(.two-columns) {
   display: flex;
   flex-direction: column;
 }
@@ -15,38 +19,38 @@
 
 /* Reduce heading sizes slightly */
 h1 {
-  font-size: clamp(1.5rem, 3vw, 2.5rem) !important;
-  line-height: 1.2 !important;
-  margin-bottom: 0.75rem !important;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
 }
 
 h2 {
-  font-size: clamp(1.25rem, 2.5vw, 1.875rem) !important;
-  line-height: 1.3 !important;
-  margin-bottom: 0.5rem !important;
+  font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
 }
 
 h3 {
-  font-size: clamp(1rem, 2vw, 1.5rem) !important;
-  line-height: 1.3 !important;
-  margin-bottom: 0.5rem !important;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
 }
 
 /* Compact code blocks */
 .slidev-code {
-  font-size: clamp(0.7rem, 1.4vw, 0.875rem) !important;
-  line-height: 1.4 !important;
-  padding: 0.75rem !important;
-  margin: 0.5rem 0 !important;
+  font-size: clamp(0.7rem, 1.4vw, 0.875rem);
+  line-height: 1.4;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 pre {
-  margin: 0.5rem 0 !important;
-  padding: 0.75rem !important;
+  margin: 0.5rem 0;
+  padding: 0.75rem;
 }
 
 code {
-  font-size: 0.9em !important;
+  font-size: 0.9em;
 }
 
 /* Compact tables */
@@ -57,7 +61,7 @@ table {
 }
 
 th, td {
-  padding: 0.25rem 0.5rem !important;
+  padding: 0.25rem 0.5rem;
 }
 
 /* Compact lists */
@@ -79,91 +83,99 @@ p {
 
 /* Reduce spacing in grids */
 .grid {
-  gap: 0.75rem !important;
+  gap: 0.75rem;
 }
 
 /* Compact alert boxes */
 .bg-opacity-20 {
-  padding: 0.5rem !important;
-  margin: 0.5rem 0 !important;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
   font-size: 0.875rem;
 }
 
 /* Scale text-sm and text-xs properly */
 .text-sm {
-  font-size: clamp(0.75rem, 1.4vw, 0.875rem) !important;
+  font-size: clamp(0.75rem, 1.4vw, 0.875rem);
 }
 
 .text-xs {
-  font-size: clamp(0.65rem, 1.2vw, 0.75rem) !important;
+  font-size: clamp(0.65rem, 1.2vw, 0.75rem);
 }
 
 /* Ensure divs with mb-* classes don't add too much space */
 .mb-6 {
-  margin-bottom: 1rem !important;
+  margin-bottom: 1rem;
 }
 
 .mb-4 {
-  margin-bottom: 0.75rem !important;
+  margin-bottom: 0.75rem;
 }
 
 .mb-2 {
-  margin-bottom: 0.5rem !important;
+  margin-bottom: 0.5rem;
 }
 
 .mt-8 {
-  margin-top: 1rem !important;
+  margin-top: 1rem;
 }
 
 .mt-6 {
-  margin-top: 0.75rem !important;
+  margin-top: 0.75rem;
 }
 
 .mt-4 {
-  margin-top: 0.5rem !important;
+  margin-top: 0.5rem;
 }
 
-/* Compact two-column layouts */
-.two-cols {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  height: 100%;
+/* Support Slidev two-column layout properly */
+.slidev-layout.two-columns {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 2rem !important;
 }
 
-/* Ensure content doesn't overflow */
-.slidev-layout > * {
-  max-height: 100%;
-  overflow: hidden;
+/* Don't restrict content in two-column layouts */
+.slidev-layout.two-columns > div {
+  overflow: visible !important;
+  max-height: none !important;
 }
 
-/* Scale container content */
-.container {
-  max-height: 100%;
-  overflow: hidden;
+/* Ensure Mermaid diagrams render properly and don't get cut */
+.mermaid {
+  overflow: visible !important;
+  max-height: none !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mermaid svg {
+  max-width: 100% !important;
+  height: auto !important;
+  overflow: visible !important;
 }
 
 /* Fix for code overflow */
 .shiki {
-  overflow-x: auto !important;
+  overflow-x: auto;
   max-width: 100%;
 }
 
 /* Compact inline code */
 :not(pre) > code {
-  padding: 0.1rem 0.3rem !important;
-  font-size: 0.85em !important;
+  padding: 0.1rem 0.3rem;
+  font-size: 0.85em;
 }
 
 /* Ensure emoji don't break layout */
 .text-6xl {
-  font-size: 3rem !important;
-  line-height: 1 !important;
+  font-size: 3rem;
+  line-height: 1;
 }
 
 .text-8xl {
-  font-size: 4rem !important;
-  line-height: 1 !important;
+  font-size: 4rem;
+  line-height: 1;
 }
 
 /* Better spacing for v-clicks */
@@ -173,14 +185,21 @@ p {
 
 /* Compact permission strings and command output */
 pre code {
-  line-height: 1.3 !important;
+  line-height: 1.3;
 }
 
 /* Fix table overflow */
 table {
   width: 100%;
   table-layout: auto;
-  overflow: hidden;
+}
+
+/* Additional mermaid fixes */
+svg[id^="mermaid-"] {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 /* Responsive font scaling based on viewport height */
@@ -190,11 +209,11 @@ table {
   }
   
   h1 {
-    font-size: 1.75rem !important;
+    font-size: 1.75rem;
   }
   
   h2 {
-    font-size: 1.5rem !important;
+    font-size: 1.5rem;
   }
 }
 
@@ -203,4 +222,16 @@ table {
   .slidev-page {
     font-size: 1rem;
   }
+}
+
+/* Remove default styles that might interfere */
+.slidev-layout * {
+  box-sizing: border-box;
+}
+
+/* Ensure divs in layouts don't have max-height */
+.slidev-layout > div,
+.slidev-layout section {
+  max-height: none !important;
+  overflow: visible !important;
 }

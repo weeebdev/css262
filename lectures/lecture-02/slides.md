@@ -66,7 +66,7 @@ layout: default
 
 </div>
 
-<div class="mt-6 p-3 bg-blue-500 bg-opacity-20 rounded text-sm">
+<div class="mt-2 p-2 bg-blue-500 bg-opacity-20 rounded text-sm">
 🎯 <strong>Learning Objective:</strong> Master Linux access control to secure systems and manage multi-user environments.
 </div>
 
@@ -90,7 +90,7 @@ The shell is your primary interface for system administration.
 
 </div>
 
-<div class="mt-6 p-3 bg-green-500 bg-opacity-20 rounded text-sm">
+<div class="mt-2 p-2 bg-green-500 bg-opacity-20 rounded text-sm">
 ✅ <strong>Assumption:</strong> You now have a working Linux VM and can navigate the file system.
 </div>
 
@@ -113,7 +113,7 @@ layout: default
 
 # Why Multi-User Systems?
 
-<div class="mb-6">
+<div class="mb-4">
 
 ### Linux is Designed for Multiple Users
 Linux inherited the multi-user concept from Unix (1970s) - multiple people sharing expensive mainframe computers.
@@ -125,22 +125,20 @@ Linux inherited the multi-user concept from Unix (1970s) - multiple people shari
 <div>
 
 ### Benefits
-- **Isolation:** Users can't interfere with each other
-- **Security:** Limit access to sensitive data
-- **Resource Control:** Manage CPU, memory, disk usage
-- **Accountability:** Track who did what
-- **Flexibility:** Different roles and permissions
+- **Isolation:** Users can't interfere
+- **Security:** Limit access to data
+- **Resource Control:** Manage resources
+- **Accountability:** Track activities
 
 </div>
 
 <div>
 
 ### Use Cases
-- Shared servers (web, database, etc.)
+- Shared servers (web, database)
 - Development environments
 - University/corporate systems
 - Cloud infrastructure
-- Your VM (even with one human user!)
 
 </div>
 
@@ -157,19 +155,16 @@ layout: default
 ### 1. Root User (Superuser)
 - **UID: 0** | Username: `root` | Home: `/root`
 - Unlimited privileges - can do anything
-- Dangerous - one wrong command can destroy system
 - **Avoid direct login** - use `sudo` instead
 
 ### 2. Regular Users
 - **UID: 1000+** | Home: `/home/username`
 - Created by administrators
-- Limited to their own files
 - Can use `sudo` if granted
 
 ### 3. System Users
 - **UID: 1-999** | Examples: `www-data`, `mysql`, `sshd`
 - Run services and daemons
-- No login shell (usually)
 - Enhanced security through isolation
 
 </div>
@@ -180,7 +175,7 @@ layout: default
 
 # User Identifiers (UID)
 
-<div class="mb-6 text-sm">
+<div class="mb-4 text-sm">
 
 ### Every User Has a Unique Number
 
@@ -280,11 +275,9 @@ cat /etc/passwd | grep john
 |-------|---------|-------------|
 | 1. Username | `john` | Login name |
 | 2. Password | `x` | Now in /etc/shadow |
-| 3. UID | `1000` | User ID number |
-| 4. GID | `1000` | Primary group ID |
+| 3-4. UID/GID | `1000:1000` | User and group IDs |
 | 5. GECOS | `John Doe` | Full name |
-| 6. Home | `/home/john` | Home directory |
-| 7. Shell | `/bin/bash` | Login shell |
+| 6-7. Home/Shell | `/home/john:/bin/bash` | Directory and shell |
 
 </div>
 
@@ -312,9 +305,7 @@ sudo cat /etc/shadow | grep john
 | 1. Username | Login name |
 | 2. Password | Encrypted with SHA-512 (`$6$`) |
 | 3. Last Changed | Days since 1970-01-01 |
-| 4. Min Days | Min days between password changes |
-| 5. Max Days | Max days before must change |
-| 6. Warn Days | Days before expiry to warn |
+| 4-6. Password Policy | Min/max days, warning days |
 | 7-9. | Inactivity, expiry, reserved |
 
 </div>
@@ -325,7 +316,7 @@ layout: default
 
 # Creating Users
 
-<div class="text-sm">
+<div class="text-xs">
 
 ### useradd Command
 
@@ -341,12 +332,8 @@ sudo passwd john
 ```
 
 ### Common Options
-- `-m` - Create home directory
-- `-s /bin/bash` - Set login shell
-- `-G groups` - Add to supplementary groups
-- `-u UID` - Specify UID
-- `-c "Name"` - Set full name
-- `-d /path` - Custom home directory
+- `-m` Create home | `-s /bin/bash` Set shell | `-G groups` Add to groups
+- `-u UID` Specify UID | `-c "Name"` Set name | `-d /path` Custom home
 
 </div>
 
@@ -404,7 +391,7 @@ layout: default
 
 # Managing Users
 
-<div class="text-sm">
+<div class="text-xs">
 
 ### Modify Existing Users
 
@@ -412,16 +399,14 @@ layout: default
 # Change user's shell
 sudo usermod -s /bin/zsh john
 
-# Add user to group
-sudo usermod -aG sudo john     # -a = append, don't replace
+# Add user to group (-a = append)
+sudo usermod -aG sudo john
 
 # Change username
 sudo usermod -l newname oldname
 
-# Lock user account
+# Lock / Unlock user account
 sudo usermod -L john
-
-# Unlock user account
 sudo usermod -U john
 ```
 
@@ -443,7 +428,7 @@ layout: default
 
 # Managing Groups
 
-<div class="text-sm">
+<div class="text-xs">
 
 ### Group Management Commands
 
@@ -456,17 +441,13 @@ sudo groupadd -g 5000 developers
 
 # Add user to group
 sudo usermod -aG developers john
-
-# Or use gpasswd
 sudo gpasswd -a john developers
 
 # Remove user from group
 sudo gpasswd -d john developers
 
-# Delete a group
+# Delete / View group
 sudo groupdel developers
-
-# View group members
 getent group developers
 ```
 
@@ -523,31 +504,25 @@ layout: default
 
 # su: Switch User
 
-<div class="text-sm">
+<div class="text-xs">
 
 ### Switch to Another User
 
 ```bash
-# Switch to another user
 su - john      # Login shell (loads environment)
 su john        # Non-login shell (keeps current env)
-
-# Switch to root (requires root password)
-su -
-su - root
-
-# Run single command as another user
-su -c "whoami" john
+su -           # Switch to root (requires root password)
+su -c "whoami" john  # Run single command as another user
 ```
 
 ### su vs sudo
 
 | Feature | su | sudo |
 |---------|----|----- |
-| Password | Target user's password | Your password |
+| Password | Target user's | Your password |
 | Logging | Minimal | Detailed audit trail |
 | Privilege | Becomes that user | Runs as that user |
-| Best Practice | ❌ Avoid for root | ✅ Preferred method |
+| Best Practice | ❌ Avoid for root | ✅ Preferred |
 
 </div>
 
@@ -617,18 +592,15 @@ layout: default
 | `-` | Regular file | `-rw-r--r--` |
 | `d` | Directory | `drwxr-xr-x` |
 | `l` | Symbolic link | `lrwxrwxrwx` |
-| `c` | Character device | `crw-rw----` (keyboard) |
-| `b` | Block device | `brw-rw----` (disk) |
-| `s` | Socket | `srwxrwxrwx` |
-| `p` | Named pipe | `prw-r--r--` |
+| `c/b` | Device (char/block) | `crw-rw----` / `brw-rw----` |
+| `s/p` | Socket / pipe | `srwxrwxrwx` / `prw-r--r--` |
 
 ### Examples
 
 ```bash
-ls -la /dev | head -4
+ls -la /dev | head -3
 # drwxr-xr-x  20 root root   3940 Jan 28 10:00 .
 # crw-rw-rw-   1 root tty  5,   0 Jan 28 14:45 tty
-# brw-rw----   1 root disk 8,   0 Jan 28 10:00 sda
 ```
 
 </div>
@@ -689,7 +661,7 @@ layout: default
 
 # Reading Permissions
 
-<div class="mb-6 text-sm">
+<div class="mb-4 text-sm">
 
 ### Practice Exercise
 
@@ -742,60 +714,35 @@ layout: default
 
 # chmod: Change Mode
 
-<div class="text-sm">
-
-### Two Notations: Symbolic and Octal
-
-</div>
-
 <div class="grid grid-cols-2 gap-4 text-sm">
 
 <div>
 
-### Symbolic (Human-friendly)
-
+### Symbolic
 ```bash
-# Add execute for owner
-chmod u+x script.sh
-
-# Remove write for group
-chmod g-w file.txt
-
-# Set read-only for others
-chmod o=r file.txt
-
-# Add execute for all
-chmod a+x script.sh
-
-# Multiple changes
-chmod u+x,g+x,o-r file.txt
+chmod u+x script.sh        # Add execute
+chmod g-w file.txt         # Remove write
+chmod o=r file.txt         # Set read-only
+chmod a+x script.sh        # All execute
+chmod u+x,g+x,o-r file.txt # Multiple
 ```
 
-**Symbols:** `u`=user, `g`=group, `o`=others, `a`=all
+`u`=user, `g`=group, `o`=others, `a`=all
 
 </div>
 
 <div>
 
-### Octal (Numeric)
-
+### Octal (r=4, w=2, x=1)
 ```bash
-# Read permissions as binary:
-# r w x
-# 4 2 1
-
-# Examples:
 chmod 755 script.sh   # rwxr-xr-x
 chmod 644 file.txt    # rw-r--r--
 chmod 600 secret.key  # rw-------
-chmod 777 public.sh   # rwxrwxrwx (dangerous!)
+chmod 777 public.sh   # rwxrwxrwx (⚠️)
 ```
 
-**Common Values:**
-- `755` - Standard executable
-- `644` - Standard file
-- `600` - Private file
-- `700` - Private directory
+**Common:**
+`755` executable | `644` file | `600` private | `700` private dir
 
 </div>
 
@@ -810,27 +757,27 @@ layout: default
 <div class="text-sm">
 
 ```bash
-# Make script executable
-chmod +x script.sh                    # Same as chmod a+x
+# Make executable
+chmod +x script.sh
 chmod 755 script.sh
 
 # Protect sensitive file
-chmod 600 ~/.ssh/id_rsa              # Only owner can read/write
+chmod 600 ~/.ssh/id_rsa
 
-# Public readable file
-chmod 644 document.txt               # Owner: rw, others: r
+# Public readable
+chmod 644 document.txt
 
 # Shared directory
-chmod 770 /shared/project            # Owner+Group: full, Others: none
+chmod 770 /shared/project
 
-# Recursive permissions
-chmod -R 755 /var/www/html           # Apply to all files/dirs
+# Recursive
+chmod -R 755 /var/www/html
 
-# Remove all permissions for others
+# Remove others permissions
 chmod o-rwx file.txt
 
-# Set specific permissions
-chmod u=rwx,g=rx,o=r file.txt       # rwxr-xr--
+# Specific permissions
+chmod u=rwx,g=rx,o=r file.txt
 ```
 
 </div>
@@ -843,21 +790,18 @@ layout: default
 
 <div class="text-xs">
 
-### Binary to Octal Conversion
-
 | Binary | Octal | Perms | Description |
 |--------|-------|-------|-------------|
 | 000 | 0 | `---` | No access |
-| 001 | 1 | `--x` | Execute only |
-| 010 | 2 | `-w-` | Write only |
+| 001 | 1 | `--x` | Execute |
+| 010 | 2 | `-w-` | Write |
 | 011 | 3 | `-wx` | Write + Execute |
-| 100 | 4 | `r--` | Read only |
+| 100 | 4 | `r--` | Read |
 | 101 | 5 | `r-x` | Read + Execute |
 | 110 | 6 | `rw-` | Read + Write |
 | 111 | 7 | `rwx` | Full access |
 
-### Common Patterns
-`644` → `rw-r--r--` (file) | `755` → `rwxr-xr-x` (executable) | `700` → `rwx------` (private) | `777` → ⚠️ dangerous!
+**Common:** `644` = `rw-r--r--` (file) | `755` = `rwxr-xr-x` (exec) | `700` = `rwx------` (private) | `777` = ⚠️ danger
 
 </div>
 
@@ -893,7 +837,7 @@ Only root (or sudo) can change ownership - prevents users from giving away files
 
 </div>
 
-<div class="mt-4 p-3 bg-blue-500 bg-opacity-20 rounded text-sm">
+<div class="mt-2 p-2 bg-blue-500 bg-opacity-20 rounded text-sm">
 💡 <strong>Tip:</strong> When deploying web apps, set ownership to `www-data:www-data` for web server access.
 </div>
 
@@ -1189,7 +1133,7 @@ layout: default
 
 </div>
 
-<div class="mt-4 p-3 bg-purple-500 bg-opacity-20 rounded text-sm">
+<div class="mt-2 p-2 bg-purple-500 bg-opacity-20 rounded text-sm">
 🛡️ <strong>Security Principle:</strong> Principle of Least Privilege - grant only the minimum permissions needed.
 </div>
 
@@ -1199,7 +1143,7 @@ layout: default
 
 # Finding Files by Permission
 
-<div class="text-sm">
+<div class="text-xs">
 
 ### Security Audit Commands
 
@@ -1231,7 +1175,7 @@ layout: default
 
 # Lab 2 Preview: User Management
 
-<div class="text-sm">
+<div class="text-xs">
 
 ### What You'll Do
 1. 👤 Create multiple user accounts
@@ -1293,19 +1237,13 @@ layout: default
 
 | Command | Purpose | Example |
 |---------|---------|---------|
-| `useradd` | Create user | `sudo useradd -m john` |
-| `passwd` | Set password | `sudo passwd john` |
+| `useradd` / `userdel` | Create/delete user | `sudo useradd -m john` |
 | `usermod` | Modify user | `sudo usermod -aG sudo john` |
-| `userdel` | Delete user | `sudo userdel -r john` |
 | `groupadd` | Create group | `sudo groupadd devs` |
 | `chmod` | Change permissions | `chmod 755 file.sh` |
-| `chown` | Change owner | `sudo chown john:devs file` |
-| `chgrp` | Change group | `chgrp devs file` |
-| `umask` | Default permissions | `umask 022` |
-| `id` | Show user info | `id john` |
-| `groups` | Show groups | `groups john` |
-| `getfacl` | Show ACLs | `getfacl file.txt` |
-| `setfacl` | Set ACLs | `setfacl -m u:alice:r file` |
+| `chown` / `chgrp` | Change owner/group | `sudo chown john:devs file` |
+| `id` / `groups` | Show user/groups | `id john` |
+| `getfacl` / `setfacl` | View/set ACLs | `getfacl file.txt` |
 
 </div>
 
@@ -1330,7 +1268,7 @@ layout: default
 
 </div>
 
-<div class="mt-4 p-3 bg-yellow-500 bg-opacity-20 rounded text-sm">
+<div class="mt-2 p-2 bg-yellow-500 bg-opacity-20 rounded text-sm">
 ⚠️ <strong>Never manually edit /etc/passwd or /etc/shadow!</strong> Use proper commands.
 </div>
 
@@ -1375,7 +1313,7 @@ layout: default
 
 # Week 2 Action Items
 
-<div class="text-sm">
+<div class="text-xs">
 
 ### ✅ Before Next Lecture
 1. Read **Chapter 6** of "The Linux Command Line" (Permissions)
@@ -1410,7 +1348,7 @@ class: text-center
 
 Understanding permissions is crucial for system security!
 
-<div class="mt-8">
+<div class="mt-4">
 
 **Next Week:** Process Management & Systemd ⚙️
 
@@ -1429,6 +1367,6 @@ class: text-center
 
 **Remember:** Proper permissions = Secure systems
 
-<div class="mt-8 text-sm opacity-75">
+<div class="mt-4 text-sm opacity-75">
 CSS 262 - Linux Administration & *nix Systems for Cybersecurity
 </div>
