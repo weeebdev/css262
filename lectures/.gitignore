@@ -1,7 +1,5 @@
 node_modules/
 dist/
-exports/
 .slidev/
-*.pdf
 .DS_Store
 *.log
