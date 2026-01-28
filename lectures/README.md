@@ -9,7 +9,7 @@ All lectures are managed through a **single Slidev project** to avoid duplicate 
 | Week | Topic | Status |
 |------|-------|--------|
 | 1 | Course Introduction & The Shell | ✅ Complete |
-| 2 | Users, Groups & Permissions | 🚧 Coming soon |
+| 2 | Users, Groups & Permissions | ✅ Complete |
 | 3 | Process Management & Systemd | 🚧 Coming soon |
 | 4 | Storage, Filesystems & LVM | 🚧 Coming soon |
 | 5 | Bash Scripting & Automation | 🚧 Coming soon |

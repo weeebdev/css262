@@ -14,7 +14,10 @@ drawings:
 transition: slide-left
 title: 'Lecture 1: Course Introduction & The Shell'
 mdc: true
+css: unocss
 ---
+
+<style src="../style.css"></style>
 
 # CSS 262: Linux Administration
 ## *nix Systems for Cybersecurity
