@@ -10,8 +10,8 @@ All lectures are managed through a **single Slidev project** to avoid duplicate 
 |------|-------|--------|
 | 1 | Course Introduction & The Shell | ✅ Complete |
 | 2 | Users, Groups & Permissions | ✅ Complete |
-| 3 | Process Management & Systemd | 🚧 Coming soon |
-| 4 | Storage, Filesystems & LVM | 🚧 Coming soon |
+| 3 | Process Management & Systemd | ✅ Complete |
+| 4 | Storage, Filesystems & LVM | ✅ Complete |
 | 5 | Bash Scripting & Automation | 🚧 Coming soon |
 | 6 | Linux Networking Basics | 🚧 Coming soon |
 | 7 | Package Management & Repositories | 🚧 Coming soon |
