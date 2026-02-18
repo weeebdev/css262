@@ -28,11 +28,14 @@ let failCount = 0;
 lectures.forEach((lecture) => {
   const slidesPath = `${lecture}/slides.md`;
   const outputPath = `exports/${lecture}.pdf`;
-  
-  console.log(`\n📄 Exporting ${lecture} to PDF...`);
-  
+  const slidesFullPath = path.join(lecturesDir, slidesPath);
+  const hasMermaid = fs.readFileSync(slidesFullPath, 'utf8').includes('```mermaid');
+  const extraArgs = hasMermaid ? '--per-slide --timeout 60000' : '';
+
+  console.log(`\n📄 Exporting ${lecture} to PDF${hasMermaid ? ' (with Mermaid, using --per-slide)' : ''}...`);
+
   try {
-    execSync(`npx slidev export ${slidesPath} --output ${outputPath}`, {
+    execSync(`npx slidev export ${slidesPath} --output ${outputPath} ${extraArgs}`.trim(), {
       stdio: 'inherit',
       cwd: lecturesDir
     });
