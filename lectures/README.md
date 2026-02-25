@@ -13,7 +13,7 @@ All lectures are managed through a **single Slidev project** to avoid duplicate 
 | 3 | Process Management & Systemd | ✅ Complete |
 | 4 | Storage, Filesystems & LVM | ✅ Complete |
 | 5 | Bash Scripting & Automation | ✅ Complete |
-| 6 | Linux Networking Basics | 🚧 Coming soon |
+| 6 | Linux Networking Basics | ✅ Complete |
 | 7 | Package Management & Repositories | 🚧 Coming soon |
 | 8 | Midterm Assessment | N/A |
 | 9 | SSH Hardening & Remote Access | 🚧 Coming soon |

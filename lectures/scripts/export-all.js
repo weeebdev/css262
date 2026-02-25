@@ -29,6 +29,19 @@ lectures.forEach((lecture) => {
   const slidesPath = `${lecture}/slides.md`;
   const outputPath = `exports/${lecture}.pdf`;
   const slidesFullPath = path.join(lecturesDir, slidesPath);
+  const pdfFullPath = path.join(lecturesDir, outputPath);
+
+  // Skip if PDF exists and slides.md is unchanged
+  if (fs.existsSync(pdfFullPath)) {
+    const slidesStat = fs.statSync(slidesFullPath);
+    const pdfStat = fs.statSync(pdfFullPath);
+    if (slidesStat.mtimeMs <= pdfStat.mtimeMs) {
+      console.log(`\n⏭️  Skipping ${lecture} (PDF is up to date)`);
+      successCount++;
+      return;
+    }
+  }
+
   const hasMermaid = fs.readFileSync(slidesFullPath, 'utf8').includes('```mermaid');
   const extraArgs = hasMermaid ? '--per-slide --timeout 60000' : '';
 
