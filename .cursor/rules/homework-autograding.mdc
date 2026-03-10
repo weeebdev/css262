@@ -1,0 +1,85 @@
+---
+description: GitHub Classroom autograding workflow pattern for CSS262 homework assignments
+globs: assignments/**
+alwaysApply: false
+---
+
+# Homework Autograding Pattern
+
+All homework assignments use **point-based scoring** via GitHub Classroom's autograding actions.
+
+## Critical: Command-grader strips environment variables
+
+The `autograding-command-grader` only passes `PATH` and `HOME` to commands.
+All custom env vars (SOURCE_DIR, BACKUP_DIR, etc.) are **invisible** inside grader commands.
+
+**Workaround**: Write env vars to `/tmp/hw_env.sh` in the setup step (regular `run:`),
+then `. /tmp/hw_env.sh` as the first line of every grader `command:`.
+
+## Workflow Structure
+
+```yaml
+name: Autograding Tests
+on: [push, workflow_dispatch]
+permissions:
+  actions: read
+  contents: read
+  checks: write
+jobs:
+  autograding:
+    runs-on: ubuntu-22.04
+    env:
+      STUDENT_ID: ${{ github.actor }}
+      SOME_DIR: /tmp/prefix_${{ github.actor }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup test environment
+        run: |
+          # Persist env vars for the command-grader (it strips them)
+          cat > /tmp/hw_env.sh << EOF
+          export STUDENT_ID="$STUDENT_ID"
+          export SOME_DIR="$SOME_DIR"
+          EOF
+          # ... install deps, create test fixtures ...
+      - name: Test Name
+        id: test-name  # kebab-case, used by reporter
+        if: always()   # required on all tests after the first
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Test Name
+          command: |
+            . /tmp/hw_env.sh
+            # actual test commands here
+          timeout: 2
+          max-score: 30
+      # ... more tests ...
+      - name: Autograding Reporter
+        uses: classroom-resources/autograding-grading-reporter@v1
+        if: always()
+        env:
+          TEST-NAME_RESULTS: "${{steps.test-name.outputs.result}}"
+        with:
+          runners: test-name,other-test  # comma-separated step ids
+```
+
+## Key Rules
+
+- Every test step uses `classroom-resources/autograding-command-grader@v1`
+- **Every grader command MUST start with `. /tmp/hw_env.sh`** to restore env vars
+- All tests except the first need `if: always()` so they run even if earlier tests fail
+- The reporter step MUST have `if: always()` and map every test's `outputs.result`
+- Reporter env var format: `STEP-ID_RESULTS` (step id uppercased, hyphens kept)
+- `max-score` values across all tests should sum to 100
+- Anti-copy: derive all paths/values from `${{ github.actor }}`
+
+## Repo File Structure
+
+Every homework directory must include:
+
+- `script_name.sh` — student template with stubs
+- `SOLUTION.sh` — instructor reference (gitignored)
+- `.gitignore` — **must include `SOLUTION.sh`** so it stays out of student repos
+- `.github/workflows/classroom.yml` — autograding workflow
+- `README.md` — assignment spec
+- `STUDENT_QUICKSTART.md` — quick-start guide
+- `GITHUB_CLASSROOM_SETUP.md` — deployment guide

@@ -2,6 +2,27 @@
 
 ## 2026-03-10
 
+### Changed: Homework autograding — point-based scoring
+
+- **homework-2/.github/workflows/classroom.yml**: Replaced plain pass/fail steps with `classroom-resources/autograding-command-grader@v1` + `autograding-grading-reporter@v1`
+  - Syntax Check: 10 pts, Backup: 30 pts, Rotate: 25 pts, Log Analysis: 25 pts, Run All: 10 pts
+  - Scores now visible in GitHub Classroom dashboard (e.g., 55/100)
+- **homework-3/.github/workflows/classroom.yml**: Same pattern applied
+  - Syntax: 10 pts, SSH Harden: 30 pts, SSH Audit: 25 pts, Firewall: 25 pts, Full Audit: 10 pts
+- Added `.cursor/rules/homework-autograding.mdc` to document the pattern for future homeworks
+
+### Added: Homework 3 — SSH Hardening & Firewall Rules
+
+- **assignments/homework-3/**: New assignment with anti-copy design
+  - `ssh_firewall_tool.sh`: Template for harden_ssh, audit_ssh, generate_firewall, full_audit
+  - `README.md`: Tasks, env var requirements, testing instructions
+  - `SOLUTION.sh`: Instructor reference implementation
+  - `.github/workflows/classroom.yml`: Custom workflow using `GITHUB_ACTOR` for student-specific SSH config dirs and firewall paths
+  - `GITHUB_CLASSROOM_SETUP.md`: Deployment guide
+  - `STUDENT_QUICKSTART.md`: Quick start for students
+- **Anti-copy mechanism:** SSH_CONFIG_DIR, FIREWALL_RULES_DIR, ALLOWED_USERS, TRUSTED_NETWORK all derived from `github.actor`; hardcoded values fail
+- Updated **assignments/README.md**: Homework 3 status set to ✅ Ready, due week updated to Week 9
+
 ### Changed: Course plan — replaced Midterm with Mid-semester Project
 
 - **README.md**: Restructured weekly plan (Weeks 7–15):
