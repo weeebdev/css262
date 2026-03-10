@@ -22,9 +22,9 @@ Crucially, the course adopts a **"security-first"** approach. Key topics include
 | ----- | -------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | **1** | **Administer** | The fundamental components of Linux: user accounts, file permissions, storage volumes, and system initialization. | Lectures (Weeks 1-4), Lab 2 (User Mgmt), Assignment 1.            |
 | **2** | **Develop**    | Automated solutions for system maintenance and log processing using Bash shell scripting.                         | Scripting workshops (Week 5), Lab 5, Assignment 2 (Backup Tools). |
-| **3** | **Configure**  | Robust network settings (Static IP, DNS) and package repositories to ensure reliable connectivity.                | Network troubleshooting (Week 6), Lab 7, Midterm Exam.            |
-| **4** | **Harden**     | The security posture of servers by implementing SSH keys, firewall rules (UFW/iptables), and disabling services.  | SSH Audits (Week 9), Lab 9 (Firewalls), Assignment 3.             |
-| **5** | **Analyze**    | System logs and audit trails to detect unauthorized access and troubleshoot SELinux violations.                   | Forensic analysis (Week 12), Lab 11 (Auditd), Quiz 2.             |
+| **3** | **Configure**  | Robust network settings (Static IP, DNS) and package repositories to ensure reliable connectivity.                | Network troubleshooting (Week 6), Lab 7, Quiz 1.                  |
+| **4** | **Harden**     | The security posture of servers by implementing SSH keys, firewall rules (UFW/iptables), and disabling services.  | SSH Audits (Week 8), Lab 9 (Firewalls), Mid-semester Project.     |
+| **5** | **Analyze**    | System logs and audit trails to detect unauthorized access and troubleshoot SELinux violations.                   | Forensic analysis (Week 11), Lab 11 (Auditd), Quiz 2.             |
 | **6** | **Construct**  | A fully secured, production-ready Linux infrastructure utilizing "Infrastructure as Code" principles.             | Final Capstone Project (Week 15) involving automated deployment.  |
 
 
@@ -58,23 +58,23 @@ Crucially, the course adopts a **"security-first"** approach. Key topics include
 ## 📅 Weekly Course Plan
 
 
-| Week   | Topics                                 | Activity                                         |
-| ------ | -------------------------------------- | ------------------------------------------------ |
-| **1**  | **Course Introduction & The Shell**    | Lab 1: VM Setup & Shell Navigation               |
-| **2**  | **Users, Groups & Permissions**        | Lab 2: User Management                           |
-| **3**  | **Process Management & Systemd**       | Lab 3: Systemd Services, **Submit: Homework 1**  |
-| **4**  | **Storage, Filesystems & LVM**         | Lab 4: Disk Partitioning                         |
-| **5**  | **Bash Scripting & Automation**        | Lab 5: Scripting Basics                          |
-| **6**  | **Linux Networking Basics**            | Lab 6: IP & DNS Config, **Submit: Homework 2**   |
-| **7**  | **Package Management & Repositories**  | Lab 7: Software Compilation, **Quiz 1**          |
-| **8**  | **Midterm Assessment**                 | **Midterm Exam (Broken VM Challenge)**           |
-| **9**  | **SSH Hardening & Remote Access**      | Lab 8: SSH Config                                |
-| **10** | **Firewalls & Packet Filtering**       | Lab 9: UFW/Iptables Setup                        |
-| **11** | **Mandatory Access Control (SELinux)** | Lab 10: SELinux Contexts, **Submit: Homework 3** |
-| **12** | **Logging, Auditing & Cron**           | Lab 11: Auditd & Logrotate, **Quiz 2**           |
-| **13** | **Containerization (Docker)**          | Lab 12: Docker Security                          |
-| **14** | **Vulnerability Scanning & Patching**  | Lab 13: Lynis Audit, **Submit: Homework 4**      |
-| **15** | **Capstone Project & Wrap-Up**         | **Capstone Project Defense & Final Report**      |
+| Week   | Topics                                 | Activity                                                         |
+| ------ | -------------------------------------- | ---------------------------------------------------------------- |
+| **1**  | **Course Introduction & The Shell**    | Lab 1: VM Setup & Shell Navigation                               |
+| **2**  | **Users, Groups & Permissions**        | Lab 2: User Management                                          |
+| **3**  | **Process Management & Systemd**       | Lab 3: Systemd Services, **Submit: Homework 1**                  |
+| **4**  | **Storage, Filesystems & LVM**         | Lab 4: Disk Partitioning                                        |
+| **5**  | **Bash Scripting & Automation**        | Lab 5: Scripting Basics                                         |
+| **6**  | **Linux Networking Basics**            | Lab 6: IP & DNS Config, **Submit: Homework 2**                   |
+| **7**  | **Package Management & Repositories**  | Lab 7: Software Compilation, **Quiz 1**                          |
+| **8**  | **SSH Hardening & Remote Access**      | Lab 8: SSH Config                                                |
+| **9**  | **Firewalls & Packet Filtering**       | Lab 9: UFW/Iptables Setup, **Submit: Homework 3**                |
+| **10** | **Mandatory Access Control (SELinux)** | Lab 10: SELinux Contexts                                         |
+| **11** | **Logging, Auditing & Cron**           | Lab 11: Auditd & Logrotate, **Quiz 2**                           |
+| **12** | **Containerization (Docker)**          | Lab 12: Docker Security, **Mid-semester Project Assigned**       |
+| **13** | **Vulnerability Scanning & Patching**  | Lab 13: Lynis Audit, **Submit: Homework 4**                      |
+| **14** | **Project Work & Review**              | **Mid-semester Project Due**, **Quiz 3**                         |
+| **15** | **Capstone Project & Wrap-Up**         | **Capstone Project Defense & Final Report**                      |
 
 
 ---
@@ -90,28 +90,28 @@ Crucially, the course adopts a **"security-first"** approach. Key topics include
 ### Assessment Breakdown
 
 
-| Assessment   | Description                                         | Quantity | Weight (%) |
-| ------------ | --------------------------------------------------- | -------- | ---------- |
-| **Homework** | Auto-graded Bash scripting assignments.             | 4        | **30%**    |
-| **Quiz**     | Theory checks on LMS (Modules 1-3).                 | 3        | **10%**    |
-| **Midterm**  | "Broken VM" Troubleshooting Challenge.              | 1        | **20%**    |
-| **Project**  | Final Capstone: Hardened Infrastructure Deployment. | 1        | **40%**    |
-| **Total**    |                                                     |          | **100%**   |
+| Assessment              | Description                                         | Quantity | Weight (%) |
+| ----------------------- | --------------------------------------------------- | -------- | ---------- |
+| **Homework**            | Auto-graded Bash scripting assignments.             | 4        | **30%**    |
+| **Quiz**                | Theory checks on LMS.                               | 3        | **10%**    |
+| **Mid-semester Project** | Server Hardening Practical (auto-graded).           | 1        | **20%**    |
+| **Capstone Project**    | Final Capstone: Hardened Infrastructure Deployment. | 1        | **40%**    |
+| **Total**               |                                                     |          | **100%**   |
 
 
 ### Workload Estimation
 
 
-| Activity                | Quantity | Hours/Item | Total Hours    |
-| ----------------------- | -------- | ---------- | -------------- |
-| **Seminar (Lecture)**   | 15       | 1          | 15             |
-| **Practice (Lab)**      | 15       | 2          | 30             |
-| **Self-study**          | 15       | 3          | 45             |
-| **Homework Assignment** | 4        | 4          | 16             |
-| **Quiz**                | 3        | 1          | 3              |
-| **Midterm Exam**        | 1        | 4          | 4              |
-| **Capstone Project**    | 1        | 25         | 25             |
-| **Total**               |          |            | **~138 Hours** |
+| Activity                    | Quantity | Hours/Item | Total Hours    |
+| --------------------------- | -------- | ---------- | -------------- |
+| **Seminar (Lecture)**       | 15       | 1          | 15             |
+| **Practice (Lab)**          | 15       | 2          | 30             |
+| **Self-study**              | 15       | 3          | 45             |
+| **Homework Assignment**     | 4        | 4          | 16             |
+| **Quiz**                    | 3        | 1          | 3              |
+| **Mid-semester Project**    | 1        | 10         | 10             |
+| **Capstone Project**        | 1        | 25         | 25             |
+| **Total**                   |          |            | **~144 Hours** |
 
 
 ---
@@ -125,7 +125,7 @@ Crucially, the course adopts a **"security-first"** approach. Key topics include
 2. **UNIX and Linux System Administration Handbook (5th Edition)** – Evi Nemeth et al.
   *Primary text for Internals & Docker.*
 3. **PicoCTF Learning Primer** – PicoCTF Team
-  *Guide for CTF-style assessments (Midterm/Labs).*
+  *Guide for CTF-style assessments (Labs/Projects).*
 
 ### Required Tools
 
@@ -137,8 +137,8 @@ Crucially, the course adopts a **"security-first"** approach. Key topics include
 
 ## ⚙️ Technical Requirements (Anti-Cheat Policy)
 
-All graded scripts (Homework/Midterm/Final) run in a CI/CD pipeline.
+All graded scripts (Homework/Projects) run in a CI/CD pipeline.
 
 1. **Dynamic Inputs:** Scripts must handle random filenames/users passed as variables. Hardcoding values will result in failure.
-2. **Identity Verification:** Midterm flags are cryptographically tied to your GitHub username. Sharing code will result in flag mismatch and failure.
+2. **Identity Verification:** Project paths and configs are derived from your GitHub username. Sharing code will result in mismatch and failure.
 
