@@ -16,7 +16,7 @@ All lectures are managed through a **single Slidev project** to avoid duplicate 
 | 6 | Linux Networking Basics | ✅ Complete |
 | 7 | Package Management & Repositories | ✅ Complete |
 | 8 | SSH Hardening & Remote Access | ✅ Complete |
-| 9 | Firewalls & Packet Filtering | 🚧 Coming soon |
+| 9 | Firewalls & Packet Filtering | ✅ Complete |
 | 10 | Mandatory Access Control (SELinux) | 🚧 Coming soon |
 | 11 | Logging, Auditing & Cron | 🚧 Coming soon |
 | 12 | Containerization (Docker) | 🚧 Coming soon |

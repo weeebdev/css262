@@ -2,6 +2,24 @@
 
 ## 2026-03-10
 
+### Changed: Quiz schedule — 5 topics per quiz
+
+- Quiz 1 → **Week 9** (covers Weeks 1-5: Shell, Users, Processes, Storage, Bash)
+- Quiz 2 → **Week 12** (covers Weeks 6-10: Networking, Packages, SSH, Firewalls, SELinux)
+- Quiz 3 → **Week 14** (covers Weeks 11-13: Logging, Docker, Vuln Scanning)
+- Added quiz topics list to `README.md` for student preparation
+- Created `quizzes/quiz-1.md` — 25 multiple-choice questions (5 per week, with answers)
+- Added root `.gitignore` excluding `quizzes/` from the repo
+
+### Added: Homework 4 — Vulnerability Scanning & Patch Auditing
+
+- `assignments/homework-4/vuln_scanner.sh` — student template with 5 task stubs
+- `assignments/homework-4/SOLUTION.sh` — instructor reference (gitignored)
+- `assignments/homework-4/.github/workflows/classroom.yml` — autograding (6 tests, 100 pts)
+  - Syntax: 10 pts, Parse Scan: 25 pts, Check Packages: 20 pts, Audit Permissions: 20 pts, Generate Report: 15 pts, Full Scan: 10 pts
+- Tasks: parse vulnerability scan output, audit installed packages via dpkg-query, check file permissions against baselines, generate prioritized remediation reports
+- `assignments/homework-4/README.md`, `STUDENT_QUICKSTART.md`, `GITHUB_CLASSROOM_SETUP.md`, `.gitignore`
+
 ### Changed: Homework autograding — point-based scoring
 
 - **homework-2/.github/workflows/classroom.yml**: Replaced plain pass/fail steps with `classroom-resources/autograding-command-grader@v1` + `autograding-grading-reporter@v1`
@@ -60,6 +78,19 @@
 - Updated **lectures/README.md**: Lecture 8 status set to ✅ Complete
 
 First lecture in the security block (Weeks 8–11). Supports CLO 4: Harden security posture with SSH keys, firewall rules, and disabling services.
+
+### Added: Lecture 9 — Firewalls & Packet Filtering
+
+- **lecture-09/slides.md**: Slidev presentation covering:
+  - Part 1: Firewall fundamentals (packet filtering vs. stateful, Netfilter, chains)
+  - Part 2: iptables (INPUT/OUTPUT/FORWARD, rule syntax, conntrack, logging, persistence)
+  - Part 3: UFW (allow/deny, application profiles, status, secure setup)
+  - Part 4: Advanced (firewall + SSH hardening, common patterns, nftables/firewalld overview)
+  - Lab exercises, security checklist, resources
+- **lecture-09/README.md**: Detailed lecture notes, commands reference, exercises, troubleshooting guide
+- Updated **lectures/README.md**: Lecture 9 status set to ✅ Complete
+
+Aligns with Week 9 syllabus: Firewalls & Packet Filtering, Lab 9 (UFW/Iptables Setup), Quiz 1, Homework 3 submission. Supports CLO 4: Harden security posture with firewall rules.
 
 ## 2025-02-25
 

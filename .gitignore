@@ -1,0 +1,11 @@
+# Quiz questions (instructor-only, not for students)
+quizzes/
+
+# System files
+.DS_Store
+
+# Editor files
+*.swp
+*~
+.vscode/
+.idea/

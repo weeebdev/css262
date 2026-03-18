@@ -7,7 +7,7 @@
 | **Homework 1** | Linux Fundamentals & User Management | Week 3 | 7.5% | ✅ Ready |
 | **Homework 2** | Bash Scripting & Backup Tools | Week 6 | 7.5% | ✅ Ready |
 | **Homework 3** | SSH Hardening & Firewall Rules | Week 9 | 7.5% | ✅ Ready |
-| **Homework 4** | Vulnerability Scanning | Week 13 | 7.5% | 🔜 Coming |
+| **Homework 4** | Vulnerability Scanning & Patch Auditing | Week 13 | 7.5% | ✅ Ready |
 
 ## Homework 1: Linux Fundamentals
 
@@ -61,3 +61,24 @@ rm -rf ../hw3-template-build
 ```
 
 **Important:** Do NOT add tests via Classroom UI. Template includes custom `.github/workflows/classroom.yml`. See `homework-3/GITHUB_CLASSROOM_SETUP.md`.
+
+## Homework 4: Vulnerability Scanning & Patch Auditing
+
+**Topics:** Scan report parsing, package auditing (dpkg-query), file permission checks, remediation reports  
+**Points:** 100 (7.5% of course grade)  
+**Due:** Week 13  
+**Anti-copy:** Uses `GITHUB_ACTOR` for student-specific paths
+
+### Quick Deploy:
+```bash
+cd homework-4
+git init /tmp/hw4-template
+cp -r .github README.md STUDENT_QUICKSTART.md vuln_scanner.sh .gitignore /tmp/hw4-template/
+cd /tmp/hw4-template
+git add . && git commit -m "Template"
+gh repo create SDU-CSS262-2026/homework-4-template --private --source=. --push
+gh repo edit SDU-CSS262-2026/homework-4-template --enable-template
+rm -rf /tmp/hw4-template
+```
+
+**Important:** Do NOT add tests via Classroom UI. Template includes custom `.github/workflows/classroom.yml`. See `homework-4/GITHUB_CLASSROOM_SETUP.md`.

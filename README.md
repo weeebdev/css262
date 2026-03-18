@@ -66,14 +66,14 @@ Crucially, the course adopts a **"security-first"** approach. Key topics include
 | **4**  | **Storage, Filesystems & LVM**         | Lab 4: Disk Partitioning                                        |
 | **5**  | **Bash Scripting & Automation**        | Lab 5: Scripting Basics                                         |
 | **6**  | **Linux Networking Basics**            | Lab 6: IP & DNS Config, **Submit: Homework 2**                   |
-| **7**  | **Package Management & Repositories**  | Lab 7: Software Compilation, **Quiz 1**                          |
+| **7**  | **Package Management & Repositories**  | Lab 7: Software Compilation                                      |
 | **8**  | **SSH Hardening & Remote Access**      | Lab 8: SSH Config                                                |
-| **9**  | **Firewalls & Packet Filtering**       | Lab 9: UFW/Iptables Setup, **Submit: Homework 3**                |
+| **9**  | **Firewalls & Packet Filtering**       | Lab 9: UFW/Iptables Setup, **Quiz 1 (Weeks 1-5)**, **Submit: Homework 3** |
 | **10** | **Mandatory Access Control (SELinux)** | Lab 10: SELinux Contexts                                         |
-| **11** | **Logging, Auditing & Cron**           | Lab 11: Auditd & Logrotate, **Quiz 2**                           |
-| **12** | **Containerization (Docker)**          | Lab 12: Docker Security, **Mid-semester Project Assigned**       |
-| **13** | **Vulnerability Scanning & Patching**  | Lab 13: Lynis Audit, **Submit: Homework 4**                      |
-| **14** | **Project Work & Review**              | **Mid-semester Project Due**, **Quiz 3**                         |
+| **11** | **Logging, Auditing & Cron**           | Lab 11: Auditd & Logrotate                                      |
+| **12** | **Containerization (Docker)**          | Lab 12: Docker Security, **Quiz 2 (Weeks 6-10)**, **Mid-semester Project Assigned** |
+| **13** | **Vulnerability Scanning & Patching**  | Lab 13: Lynis Audit, **Submit: Homework 4**                     |
+| **14** | **Project Work & Review**              | **Quiz 3 (Weeks 11-13)**, **Mid-semester Project Due**          |
 | **15** | **Capstone Project & Wrap-Up**         | **Capstone Project Defense & Final Report**                      |
 
 
@@ -132,6 +132,32 @@ Crucially, the course adopts a **"security-first"** approach. Key topics include
 - **Laptop:** Minimum 8GB RAM, capable of running VirtualBox/VMware.
 - **Software:** VirtualBox, Git, VS Code.
 - **Accounts:** GitHub (Free Educational Account recommended).
+
+---
+
+## 📝 Quiz Topics
+
+### Quiz 1 (Week 9) — Covers Weeks 1-5
+
+1. **The Shell** — Terminal navigation, basic commands (`ls`, `cd`, `cp`, `mv`, `rm`, `mkdir`), absolute vs relative paths, man pages, I/O redirection (`>`, `>>`, `2>`, `|`), file system hierarchy (`/etc`, `/home`, `/var`, `/tmp`, `/dev`)
+2. **Users, Groups & Permissions** — `useradd`/`usermod`/`userdel`, `/etc/passwd` and `/etc/shadow`, groups, `chmod` (octal & symbolic), `chown`/`chgrp`, umask, SUID/SGID/sticky bit, ACLs (`setfacl`/`getfacl`), `sudo` vs `su`
+3. **Process Management & Systemd** — `ps aux`, `top`/`htop`, signals (`kill`, `SIGTERM`, `SIGKILL`), job control (`Ctrl+Z`, `fg`, `bg`), `nice`/`renice`, `systemctl` (start/stop/enable/disable/status), unit files, `journalctl`, process states
+4. **Storage, Filesystems & LVM** — Block devices, MBR vs GPT, `fdisk`/`parted`, filesystems (ext4, XFS), `mkfs`, `mount`/`umount`, `/etc/fstab`, LVM concepts (PV → VG → LV), `lsblk`, `blkid`, `df`/`du`, LVM snapshots, secure mount options
+5. **Bash Scripting & Automation** — Shebang (`#!/bin/bash`), `set -euo pipefail`, variables, special variables (`$0`, `$1`, `$?`, `$@`, `$#`), `if`/`case`/`for`/`while`, functions, `grep`/`sed`/`awk`, cron syntax, `shellcheck`, `bash -n`/`bash -x`
+
+### Quiz 2 (Week 12) — Covers Weeks 6-10
+
+6. **Linux Networking** — IP addressing, `ip addr`/`ip route`, DNS (`/etc/resolv.conf`, `dig`, `nslookup`), `ss`/`netstat`, `ping`/`traceroute`, static vs DHCP, NetworkManager
+7. **Package Management** — APT (`apt update`/`install`/`remove`), `dpkg`/`dpkg-query`, DNF/YUM, repository config, GPG keys, PPAs, building from source (`./configure`, `make`, `make install`)
+8. **SSH Hardening** — Key pairs (`ssh-keygen`), `sshd_config` settings, key-based auth, disabling root/password auth, port changes, `ssh-agent`, `~/.ssh/config`, port forwarding
+9. **Firewalls** — iptables chains (INPUT/FORWARD/OUTPUT), default policies, rule syntax (`-A`, `-p`, `--dport`, `-j`), stateful inspection (`conntrack`), UFW, logging, common patterns
+10. **SELinux** — DAC vs MAC, modes (enforcing/permissive/disabled), contexts, `ls -Z`, `chcon`, `restorecon`, booleans (`setsebool`), `audit2why`
+
+### Quiz 3 (Week 14) — Covers Weeks 11-13
+
+11. **Logging, Auditing & Cron** — `journalctl` filtering, syslog/rsyslog, `logrotate`, `auditd` rules, `ausearch`/`aureport`, cron scheduling, `at` jobs
+12. **Containerization (Docker)** — Containers vs VMs, Docker architecture, `docker run`/`build`/`ps`/`logs`, Dockerfiles, volumes, networking, security (namespaces, cgroups, rootless)
+13. **Vulnerability Scanning** — Lynis audits, CVE databases, package auditing (`dpkg-query`), file permission baselines, remediation prioritization, patch management, `unattended-upgrades`
 
 ---
 
