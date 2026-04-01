@@ -17,8 +17,8 @@ All lectures are managed through a **single Slidev project** to avoid duplicate 
 | 7 | Package Management & Repositories | ✅ Complete |
 | 8 | SSH Hardening & Remote Access | ✅ Complete |
 | 9 | Firewalls & Packet Filtering | ✅ Complete |
-| 10 | Mandatory Access Control (SELinux) | 🚧 Coming soon |
-| 11 | Logging, Auditing & Cron | 🚧 Coming soon |
+| 10 | Mandatory Access Control (SELinux) | ✅ Complete |
+| 11 | Logging, Auditing & Cron | ✅ Complete |
 | 12 | Containerization (Docker) | 🚧 Coming soon |
 | 13 | Vulnerability Scanning & Patching | 🚧 Coming soon |
 | 14 | Project Work & Review | 🚧 Coming soon |
