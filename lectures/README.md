@@ -19,8 +19,8 @@ All lectures are managed through a **single Slidev project** to avoid duplicate 
 | 9 | Firewalls & Packet Filtering | ✅ Complete |
 | 10 | Mandatory Access Control (SELinux) | ✅ Complete |
 | 11 | Logging, Auditing & Cron | ✅ Complete |
-| 12 | Containerization (Docker) | 🚧 Coming soon |
-| 13 | Vulnerability Scanning & Patching | 🚧 Coming soon |
+| 12 | Containerization (Docker) | ✅ Complete |
+| 13 | Vulnerability Scanning & Patching | ✅ Complete |
 | 14 | Project Work & Review | 🚧 Coming soon |
 | 15 | Capstone Project & Wrap-Up | 🚧 Coming soon |
 
